@@ -5,8 +5,8 @@ import modèle.deplacement.iLigne;
 
 public class Pion extends Piece implements iLigne {
 
-    public Pion(boolean blanc, Partie partie) {
-        super(blanc, partie);
+    public Pion(boolean blanc, Partie partie, int[] emplacement) {
+        super(blanc, partie, emplacement);
         maxX = 2;
         nom = "\u256F";
     }

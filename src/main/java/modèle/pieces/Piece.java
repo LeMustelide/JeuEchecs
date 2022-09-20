@@ -12,9 +12,10 @@ public abstract class Piece implements iPiece{
     // emplacement[1] = y
     int[] emplacement;
 
-    public Piece(boolean blanc, Partie partie){
+    public Piece(boolean blanc, Partie partie, int[] emplacement){
         this.blanc = blanc;
         this.partie = partie;
+        this.emplacement = emplacement;
     }
 
     public String getNom(){

@@ -17,14 +17,23 @@ public class Partie  implements iPartie{
                 plateau[i][a] = new Case();
             }
         }
-        plateau[0][0].changerPiece(new Tour(false, this));
+        plateau[0][0].changerPiece(new Tour(false, this, new int[]{0, 0}));
     }
 
     public void lancementPartie(){
-        vue.afficherPlateau(plateau);
-
+        int id = 0;
+        String[] in;
         joueurs[0] = new Joueur(vue.nomJoueur(1));
         joueurs[1] = new Joueur(vue.nomJoueur(2));
+        do{
+            id = (id==0)?1:0;
+            vue.afficherPlateau(plateau);
+            in = vue.choixPiece(joueurs[id]).split(" ");
+            for(int[] coup :plateau[Integer.valueOf(in[0])][Integer.valueOf(in[1])].getPiece().deplacementPossible()){
+                System.out.println(coup[0]+" "+coup[1]);
+            }
+        }while (!victoire());
+        plateau[0][0].getPiece().deplacementPossible();
     }
 
     @Override
