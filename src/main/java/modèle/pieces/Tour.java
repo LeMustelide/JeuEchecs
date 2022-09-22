@@ -32,21 +32,24 @@ public class Tour extends Piece implements iLigne, iColonne {
 
     @Override
     public int[] deplacementY() {
-        int[] move = new int[this.partie.getTaillePartie()];
-        for(int i=0 ;emplacement[1]+i<partie.getTaillePartie() && i<maxY; i++){
-            move[i] = emplacement[1]+i;
+        int[] move = new int[this.partie.getTaillePartie()-1];
+        for(int i=1 ;emplacement[1]+i<partie.getTaillePartie() && i<maxY; i++){
+            move[i-1] = emplacement[1]+i;
+        }
+        for(int i=1 ;emplacement[1]-i>0 && i<maxY; i++){
+            move[i-1] = emplacement[1]-i;
         }
         return move;
     }
 
     @Override
     public int[] deplacementX() {
-        int[] move = new int[this.partie.getTaillePartie()];
-        for(int i=0 ;emplacement[0]+i<partie.getTaillePartie() && i<maxX; i++){
-            move[i] = emplacement[0]+i;
+        int[] move = new int[this.partie.getTaillePartie()-1];
+        for(int i=1 ;emplacement[0]+i<partie.getTaillePartie() && i<maxX; i++){
+            move[i-1] = emplacement[0]+i;
         }
-        for(int i=0 ;emplacement[0]-i>0 && i<maxX; i++){
-            move[i] = emplacement[0]-i;
+        for(int i=1 ;emplacement[0]-i>0 && i<maxX; i++){
+            move[i-1] = emplacement[0]-i;
         }
         return move;
     }

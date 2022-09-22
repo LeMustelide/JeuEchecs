@@ -8,7 +8,7 @@ public class Pion extends Piece implements iLigne {
     public Pion(boolean blanc, Partie partie, int[] emplacement) {
         super(blanc, partie, emplacement);
         maxX = 2;
-        nom = "\u256F";
+        nom = "\u265f";
     }
 
     @Override
