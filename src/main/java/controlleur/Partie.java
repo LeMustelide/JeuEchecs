@@ -20,8 +20,8 @@ public class Partie  implements iPartie{
         }
         plateau[0][0].changerPiece(new Tour(false, this, new int[]{0, 0}));
         plateau[0][7].changerPiece(new Tour(false, this, new int[]{0, 7}));
-        plateau[7][0].changerPiece(new Tour(false, this, new int[]{7, 0}));
-        plateau[7][7].changerPiece(new Tour(false, this, new int[]{7, 7}));
+        plateau[7][0].changerPiece(new Tour(true, this, new int[]{7, 0}));
+        plateau[7][7].changerPiece(new Tour(true, this, new int[]{7, 7}));
 
         plateau[1][0].changerPiece(new Pion(false, this, new int[]{1, 0}));
         plateau[1][1].changerPiece(new Pion(false, this, new int[]{1, 1}));
@@ -32,14 +32,14 @@ public class Partie  implements iPartie{
         plateau[1][6].changerPiece(new Pion(false, this, new int[]{1, 6}));
         plateau[1][7].changerPiece(new Pion(false, this, new int[]{1, 7}));
 
-        plateau[6][0].changerPiece(new Pion(false, this, new int[]{6, 0}));
-        plateau[6][1].changerPiece(new Pion(false, this, new int[]{6, 1}));
-        plateau[6][2].changerPiece(new Pion(false, this, new int[]{6, 2}));
-        plateau[6][3].changerPiece(new Pion(false, this, new int[]{6, 3}));
-        plateau[6][4].changerPiece(new Pion(false, this, new int[]{6, 4}));
-        plateau[6][5].changerPiece(new Pion(false, this, new int[]{6, 5}));
-        plateau[6][6].changerPiece(new Pion(false, this, new int[]{6, 6}));
-        plateau[6][7].changerPiece(new Pion(false, this, new int[]{6, 7}));
+        plateau[6][0].changerPiece(new Pion(true, this, new int[]{6, 0}));
+        plateau[6][1].changerPiece(new Pion(true, this, new int[]{6, 1}));
+        plateau[6][2].changerPiece(new Pion(true, this, new int[]{6, 2}));
+        plateau[6][3].changerPiece(new Pion(true, this, new int[]{6, 3}));
+        plateau[6][4].changerPiece(new Pion(true, this, new int[]{6, 4}));
+        plateau[6][5].changerPiece(new Pion(true, this, new int[]{6, 5}));
+        plateau[6][6].changerPiece(new Pion(true, this, new int[]{6, 6}));
+        plateau[6][7].changerPiece(new Pion(true, this, new int[]{6, 7}));
     }
 
     public void lancementPartie(){
@@ -47,9 +47,10 @@ public class Partie  implements iPartie{
         String[] in;
         joueurs[0] = new Joueur(vue.nomJoueur(1));
         joueurs[1] = new Joueur(vue.nomJoueur(2));
+        vue.afficherPlateau(plateau);
         do{
             id = (id==0)?1:0;
-            vue.afficherPlateau(plateau);
+
             in = vue.choixPiece(joueurs[id]).split(" ");
             int[][] coupPossible  = plateau[Integer.valueOf(in[0])][Integer.valueOf(in[1])].getPiece().deplacementPossible();
             vue.afficherDéplacement(coupPossible, plateau);
@@ -59,7 +60,7 @@ public class Partie  implements iPartie{
             }
             */
         }while (!victoire());
-        plateau[0][0].getPiece().deplacementPossible();
+        //plateau[0][0].getPiece().deplacementPossible();
     }
 
     @Override

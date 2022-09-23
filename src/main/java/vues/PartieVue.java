@@ -13,13 +13,13 @@ public class PartieVue {
         for(Case[] ligne:cases) {
             System.out.print(i+" ");
             for (Case c : ligne) {
-                System.out.print(((c.getPiece() != null) ? c.getPiece().getNom() : " _"));
+                System.out.print(((c.getPiece() != null) ? " "+c.getPiece().getNom() : " _"));
                 System.out.print("");
             }
             i++;
             System.out.println("");
         }
-        System.out.println("  1   2   3   4   5   6   7");
+        System.out.println("  1  2  3  4  5  6  7  8");
     }
 
     public void afficherDéplacement(int[][] deplacements, Case[][] cases){
@@ -34,7 +34,7 @@ public class PartieVue {
                         valid = true;
                     }
                 }
-                System.out.print((c.getPiece() != null ? c.getPiece().getNom() : (valid)?" .":" _"));
+                System.out.print((c.getPiece() != null ? " "+c.getPiece().getNom() : (valid)?" .":" _"));
                 System.out.print(" ");
                 b++;
                 valid = false;
@@ -42,7 +42,7 @@ public class PartieVue {
             i++;
             System.out.println("");
         }
-        System.out.println("  1  2  3  4  5  6  7");
+        System.out.println("  1  2  3  4  5  6  7  8");
     }
 
     public String nomJoueur(int num){
