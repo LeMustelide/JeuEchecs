@@ -2,8 +2,7 @@ package controlleur;
 
 import modèle.Case;
 import modèle.Joueur;
-import modèle.pieces.Pion;
-import modèle.pieces.Tour;
+import modèle.pieces.*;
 import vues.PartieVue;
 
 public class Partie  implements iPartie{
@@ -20,8 +19,15 @@ public class Partie  implements iPartie{
         }
         plateau[0][0].changerPiece(new Tour(false, this, new int[]{0, 0}));
         plateau[0][7].changerPiece(new Tour(false, this, new int[]{0, 7}));
+
+        plateau[0][1].changerPiece(new Cavalier(false, this, new int[]{0, 1}));
+        plateau[0][6].changerPiece(new Cavalier(false, this, new int[]{0, 6}));
+
         plateau[7][0].changerPiece(new Tour(true, this, new int[]{7, 0}));
         plateau[7][7].changerPiece(new Tour(true, this, new int[]{7, 7}));
+
+        plateau[7][1].changerPiece(new Cavalier(true, this, new int[]{7, 1}));
+        plateau[7][6].changerPiece(new Cavalier(true, this, new int[]{7, 6}));
 
         plateau[1][0].changerPiece(new Pion(false, this, new int[]{1, 0}));
         plateau[1][1].changerPiece(new Pion(false, this, new int[]{1, 1}));
@@ -40,6 +46,15 @@ public class Partie  implements iPartie{
         plateau[6][5].changerPiece(new Pion(true, this, new int[]{6, 5}));
         plateau[6][6].changerPiece(new Pion(true, this, new int[]{6, 6}));
         plateau[6][7].changerPiece(new Pion(true, this, new int[]{6, 7}));
+
+        plateau[0][2].changerPiece(new Fou(true, this, new int[]{0, 2}));
+        plateau[0][5].changerPiece(new Fou(true, this, new int[]{0, 5}));
+
+        plateau[7][2].changerPiece(new Fou(false, this, new int[]{7, 2}));
+        plateau[7][5].changerPiece(new Fou(false, this, new int[]{7, 5}));
+
+        plateau[0][3].changerPiece(new Roi(true, this, new int[]{0, 3}));
+        plateau[7][4].changerPiece(new Roi(false, this, new int[]{7, 4}));
     }
 
     public void lancementPartie(){
@@ -52,13 +67,13 @@ public class Partie  implements iPartie{
             id = (id==0)?1:0;
 
             in = vue.choixPiece(joueurs[id]).split(" ");
-            int[][] coupPossible  = plateau[Integer.valueOf(in[0])][Integer.valueOf(in[1])].getPiece().deplacementPossible();
+            int[][] coupPossible  = plateau[Integer.valueOf(in[0])-1][Integer.valueOf(in[1])-1].getPiece().deplacementPossible();
             vue.afficherDéplacement(coupPossible, plateau);
-            /*
+
             for(int[] coup : coupPossible){
                 System.out.println("x:"+coup[0]+" y:"+coup[1]);
             }
-            */
+
         }while (!victoire());
         //plateau[0][0].getPiece().deplacementPossible();
     }

@@ -9,7 +9,7 @@ public class Tour extends Piece implements iLigne, iColonne {
         super(blanc, partie, emplacement);
         maxX = partie.getTaillePartie();
         maxY = partie.getTaillePartie();
-        nom = "\u265c";
+        nom = " \u265c";
     }
 
     @Override

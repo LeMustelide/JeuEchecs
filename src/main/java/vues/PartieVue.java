@@ -13,7 +13,7 @@ public class PartieVue {
         for(Case[] ligne:cases) {
             System.out.print(i+" ");
             for (Case c : ligne) {
-                System.out.print(((c.getPiece() != null) ? " "+c.getPiece().getNom() : " _"));
+                System.out.print(((c.getPiece() != null) ? c.getPiece().getNom() : " _ "));
                 System.out.print("");
             }
             i++;
@@ -34,7 +34,7 @@ public class PartieVue {
                         valid = true;
                     }
                 }
-                System.out.print((c.getPiece() != null ? " "+c.getPiece().getNom() : (valid)?" .":" _"));
+                System.out.print((c.getPiece() != null ? c.getPiece().getNom() : (valid)?" .":" _"));
                 System.out.print(" ");
                 b++;
                 valid = false;
